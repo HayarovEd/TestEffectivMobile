@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.edurda77.home.databinding.FragmentHomeBinding
 import com.edurda77.home.presentation.HomeViewModel
 import com.edurda77.home.utils.StateCategory
 import com.edurda77.home.utils.StateCategoryFactory
-import com.edurda77.mylibrary.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -74,6 +69,4 @@ class HomeFragment : Fragment() {
             StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
         }
     }
-
-
 }
