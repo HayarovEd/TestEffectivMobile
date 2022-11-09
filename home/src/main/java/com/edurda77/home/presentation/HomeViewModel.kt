@@ -1,4 +1,4 @@
-package com.edurda77.testeffectivmobile.ui.home
+package com.edurda77.home.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
