@@ -41,6 +41,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":home"))
+    implementation(project(":productDetails"))
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,10 @@ import com.edurda77.home.utils.StateCategoryFactory
 import com.edurda77.home.utils.StateHome
 import com.edurda77.mylibrary.entity.BestSeller
 import com.edurda77.mylibrary.entity.HomeStore
+import com.edurda77.mylibrary.navigation.Action
+import com.edurda77.mylibrary.navigation.AppNavigation
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
@@ -30,6 +34,8 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
     private var _binding: FragmentHomeBinding? = null
     private var stateCategory: StateCategory = StateCategory.ShowAll
     private val viewModel by viewModels<HomeViewModel>()
+    @Inject
+    lateinit var coordinator: AppNavigation
 
     private val binding get() = _binding!!
 
@@ -122,10 +128,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         val stateClickListener: BestSellerAdapter.OnStateClickListener =
             object : BestSellerAdapter.OnStateClickListener {
                 override fun onStateClick(bestSeller: BestSeller, position: Int) {
-                   /* val intent = Intent(this@MainActivity, MovieActivity::class.java)
-                    intent.putExtra(TRANSFER_ID, moveInList.id)
-                    startActivity(intent)*/
-                    Toast.makeText(requireContext(), "pressed", Toast.LENGTH_LONG).show()
+                    coordinator.execute(Action.HomeToProduct, bestSeller)
                 }
             }
         val bestSellerAdapter = BestSellerAdapter(bestSeller, stateClickListener)
