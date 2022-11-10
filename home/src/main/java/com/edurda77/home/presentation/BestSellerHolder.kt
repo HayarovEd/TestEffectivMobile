@@ -10,6 +10,7 @@ class BestSellerHolder(private val binding: ItemBestSellerBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
         fun bind (item: BestSeller) {
+            //binding.favoriteCb.isChecked = item.isFavorites
             binding.salePriceTv.text = "$${item.discountPrice}"
             binding.priceTv.text = "$${item.priceWithoutDiscount}"
             binding.priceTv.paintFlags = binding.priceTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG

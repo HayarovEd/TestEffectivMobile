@@ -9,8 +9,9 @@ import android.widget.ArrayAdapter
 import com.edurda77.home.R
 import com.edurda77.home.databinding.FragmentFilterDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FilterDialogFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFilterDialogBinding
