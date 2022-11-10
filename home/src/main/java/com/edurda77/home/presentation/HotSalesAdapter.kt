@@ -20,12 +20,17 @@ class HotSalesAdapter(
     }
 
     override fun onBindViewHolder(holder: HotSalesHolder, position: Int) {
-        val homeStore: HomeStore = dataList[position]
+        val positionInList = position % dataList.size
+        val homeStore: HomeStore = dataList[positionInList]
         holder.bind(homeStore)
         holder.onBuyClick.setOnClickListener{
             buyItemInterface.onBuyIconClick(homeStore)
         }
     }
 
-    override fun getItemCount(): Int = dataList.size
+    override fun getItemCount(): Int {
+        return if (dataList.isNotEmpty()) {
+            Integer.MAX_VALUE
+        } else 0
+    }
 }

@@ -1,6 +1,5 @@
 package com.edurda77.home.ui
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,20 +7,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import com.edurda77.home.databinding.FragmentHomeBinding
+import com.edurda77.home.presentation.BestSellerAdapter
 import com.edurda77.home.presentation.HomeViewModel
 import com.edurda77.home.presentation.HotSalesAdapter
-import com.edurda77.home.utils.PagerFactory
 import com.edurda77.home.utils.StateCategory
 import com.edurda77.home.utils.StateCategoryFactory
 import com.edurda77.home.utils.StateHome
+import com.edurda77.mylibrary.entity.BestSeller
 import com.edurda77.mylibrary.entity.HomeStore
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Math.abs
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
@@ -44,22 +42,22 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewPager = binding.hotSalesVp
-        val pagerFactory =  PagerFactory(viewPager)
-        pagerFactory.initPager()
         switchCategory()
         StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
         viewModel.shopData.observe(viewLifecycleOwner) {
             when (it) {
                 is StateHome.Success -> {
-                    viewPager.adapter = HotSalesAdapter(it.data.homeStore, this)
-                    viewPager.setPageTransformer(pagerFactory.setTransformer())
+                    initHotSalesRecyclerView(it.data.homeStore)
+                    initBestSellerRecyclerView(it.data.bestSeller)
                 }
-                is StateHome.Error -> {}
+                is StateHome.Error -> {
+                    Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
+                }
                 is StateHome.Loading -> {}
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -95,5 +93,36 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
 
     override fun onBuyIconClick(homeStore: HomeStore) {
         Toast.makeText(requireContext(), "${homeStore.title} Not today", Toast.LENGTH_LONG).show()
+    }
+
+    private fun initHotSalesRecyclerView(data: List<HomeStore>) {
+        val recyclerView: RecyclerView = binding.hotSalesVp
+        recyclerView.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.HORIZONTAL, false
+        )
+        val adapter = HotSalesAdapter(data, this)
+        recyclerView.adapter = adapter
+        (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(Integer.MAX_VALUE/2)
+    }
+
+
+    private fun initBestSellerRecyclerView(bestSeller: List<BestSeller>) {
+        val recyclerView: RecyclerView = binding.bestSellerRv
+        recyclerView.layoutManager = GridLayoutManager(
+            requireContext(), 2, GridLayoutManager
+                .VERTICAL, false
+        )
+        val stateClickListener: BestSellerAdapter.OnStateClickListener =
+            object : BestSellerAdapter.OnStateClickListener {
+                override fun onStateClick(bestSeller: BestSeller, position: Int) {
+                   /* val intent = Intent(this@MainActivity, MovieActivity::class.java)
+                    intent.putExtra(TRANSFER_ID, moveInList.id)
+                    startActivity(intent)*/
+                    Toast.makeText(requireContext(), "pressed", Toast.LENGTH_LONG).show()
+                }
+            }
+        val bestSellerAdapter = BestSellerAdapter(bestSeller, stateClickListener)
+        recyclerView.adapter = bestSellerAdapter
+
     }
 }
