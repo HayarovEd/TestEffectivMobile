@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.edurda77.home.R
 import com.edurda77.home.databinding.FragmentHomeBinding
 import com.edurda77.home.presentation.BestSellerAdapter
 import com.edurda77.home.presentation.HomeViewModel
@@ -43,6 +46,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         switchCategory()
+        initSpinner()
         StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
         viewModel.shopData.observe(viewLifecycleOwner) {
             when (it) {
@@ -55,6 +59,9 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
                 }
                 is StateHome.Loading -> {}
             }
+        }
+        binding.filterBt.setOnClickListener {
+            showDialogFilter()
         }
     }
 
@@ -123,6 +130,17 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
             }
         val bestSellerAdapter = BestSellerAdapter(bestSeller, stateClickListener)
         recyclerView.adapter = bestSellerAdapter
+    }
 
+    private fun showDialogFilter() {
+        val dialog = FilterDialogFragment()
+        dialog.show(childFragmentManager, "argument")
+    }
+
+    private fun initSpinner() {
+        val brandSpinner = binding.locationSp
+        val location = requireContext().resources.getStringArray(R.array.locationNames)
+        val brandAdapter = ArrayAdapter (requireContext(), R.layout.item_location_spinner, R.id.item_spinner_location_tv, location)
+        brandSpinner.adapter = brandAdapter
     }
 }

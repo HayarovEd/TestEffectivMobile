@@ -5,4 +5,6 @@
     <color name="unselected_icon">#B3B3C3</color>
     <color name="selected_icon">#FFFFFF</color>
     <color name="price">#CCCCCC</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>
