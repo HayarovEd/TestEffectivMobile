@@ -12,7 +12,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="25dp"
         android:text="Product name"
-        android:fontFamily="@font/mark_pro"
+        android:fontFamily="@font/mark_pro_medium"
         android:textSize="24sp"
         android:textColor="@color/violet"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,9 +43,9 @@
         android:id="@+id/shop_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Shop"
-        android:fontFamily="@font/mark_pro"
+        android:fontFamily="@font/mark_pro_bold"
         android:textSize="20sp"
         android:textColor="@color/unselected_icon"
         app:layout_constraintTop_toBottomOf="@id/rating_product"
@@ -56,9 +56,9 @@
         android:id="@+id/details_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Details"
-        android:fontFamily="@font/mark_pro"
+        android:fontFamily="@font/mark_pro_bold"
         android:textSize="20sp"
         android:textColor="@color/unselected_icon"
         app:layout_constraintTop_toBottomOf="@id/rating_product"
@@ -69,9 +69,9 @@
         android:id="@+id/features_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Features"
-        android:fontFamily="@font/mark_pro"
+        android:fontFamily="@font/mark_pro_bold"
         android:textSize="20sp"
         android:textColor="@color/unselected_icon"
         app:layout_constraintTop_toBottomOf="@id/rating_product"
@@ -106,5 +106,174 @@
         app:layout_constraintTop_toBottomOf="@id/shop_tv"
         app:layout_constraintStart_toStartOf="@id/features_tv"
         app:layout_constraintEnd_toEndOf="@id/features_tv"/>
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/processor_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_proc"
+        app:layout_constraintTop_toBottomOf="@id/shop_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/camera_iv"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/camera_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintTop_toBottomOf="@id/shop_tv"
+        app:layout_constraintStart_toEndOf="@id/processor_iv"
+        app:layout_constraintEnd_toStartOf="@id/ram_iv"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ram_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_ram"
+        app:layout_constraintTop_toBottomOf="@id/shop_tv"
+        app:layout_constraintStart_toEndOf="@id/camera_iv"
+        app:layout_constraintEnd_toStartOf="@id/memory_iv"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/memory_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_memory"
+        app:layout_constraintTop_toBottomOf="@id/shop_tv"
+        app:layout_constraintStart_toEndOf="@id/ram_iv"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/processor_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exynos 990"
+        android:layout_marginTop="4dp"
+        app:fontFamily="@font/mark_pro_regular"
+        android:textColor="@color/characteristics"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/processor_iv"
+        app:layout_constraintStart_toStartOf="@id/processor_iv"
+        app:layout_constraintEnd_toEndOf="@id/processor_iv"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/camera_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="108 + 12 mp"
+        android:layout_marginTop="4dp"
+        app:fontFamily="@font/mark_pro_regular"
+        android:textColor="@color/characteristics"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/camera_iv"
+        app:layout_constraintStart_toStartOf="@id/camera_iv"
+        app:layout_constraintEnd_toEndOf="@id/camera_iv"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ram_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8 GB"
+        android:layout_marginTop="4dp"
+        app:fontFamily="@font/mark_pro_regular"
+        android:textColor="@color/characteristics"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/ram_iv"
+        app:layout_constraintStart_toStartOf="@id/ram_iv"
+        app:layout_constraintEnd_toEndOf="@id/ram_iv"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/memory_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="256 GB"
+        android:layout_marginTop="4dp"
+        app:fontFamily="@font/mark_pro_regular"
+        android:textColor="@color/characteristics"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@id/memory_iv"
+        app:layout_constraintStart_toStartOf="@id/memory_iv"
+        app:layout_constraintEnd_toEndOf="@id/memory_iv"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/select_color_capacity_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select color and capacity"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        app:fontFamily="@font/mark_pro_medium"
+        android:textColor="@color/violet"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/processor_tv"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/color_first_cb"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:button="@drawable/checkbox_selector_first_color"
+        app:layout_constraintTop_toBottomOf="@id/select_color_capacity_tv"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+    android:id="@+id/color_second_cb"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="25dp"
+    android:button="@drawable/checkbox_selector_second_color"
+    app:layout_constraintTop_toBottomOf="@id/select_color_capacity_tv"
+    app:layout_constraintStart_toEndOf="@id/color_first_cb"/>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/capacity_first_cb"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:elevation="4dp"
+        android:layout_marginStart="35dp"
+        android:button="@drawable/checkbox_selector_first_capacity"
+        app:layout_constraintTop_toTopOf="@id/color_first_cb"
+        app:layout_constraintBottom_toBottomOf="@id/color_first_cb"
+        app:layout_constraintStart_toEndOf="@id/color_second_cb"/>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/capacity_second_cb"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:elevation="4dp"
+        android:layout_marginStart="15dp"
+        android:button="@drawable/checkbox_selector_second_capacity"
+        app:layout_constraintTop_toTopOf="@id/color_first_cb"
+        app:layout_constraintBottom_toBottomOf="@id/color_first_cb"
+        app:layout_constraintStart_toEndOf="@id/capacity_first_cb"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_to_chart_ib"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add to Cart  1550$"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:textAllCaps="false"
+        android:paddingBottom="8dp"
+        android:fontFamily="@font/mark_pro_bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape_orange"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/color_first_cb"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

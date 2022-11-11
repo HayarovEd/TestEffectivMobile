@@ -35,7 +35,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.productFragment
             )
         )
-
+        var badge = navView.getOrCreateBadge(R.id.navigation_dashboard)
+        badge.isVisible = true
+        badge.number = 15
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 

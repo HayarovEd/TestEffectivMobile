@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Product details"
-        android:fontFamily="@font/mark_pro"
+        android:fontFamily="@font/mark_pro_medium"
         android:textSize="20sp"
         android:textColor="@color/violet"
         app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +46,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/image_product_rv"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="200dp"
         android:orientation="horizontal"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"

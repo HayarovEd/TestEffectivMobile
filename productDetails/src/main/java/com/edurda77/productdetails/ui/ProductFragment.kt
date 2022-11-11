@@ -32,6 +32,8 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         switchCategory()
+        selectColor()
+        selectCapacity()
         StateDataFactory(binding, productData, requireContext()).initStateCategory()
     }
 
@@ -54,4 +56,28 @@ class ProductFragment : Fragment() {
             StateDataFactory(binding, productData, requireContext()).initStateCategory()
         }
     }
+
+    private fun selectColor() {
+        binding.itemDetails.colorFirstCb.setOnClickListener {
+            binding.itemDetails.colorFirstCb.isChecked = true
+            binding.itemDetails.colorSecondCb.isChecked = false
+        }
+        binding.itemDetails.colorSecondCb.setOnClickListener {
+            binding.itemDetails.colorFirstCb.isChecked = false
+            binding.itemDetails.colorSecondCb.isChecked = true
+        }
+    }
+
+    private fun selectCapacity() {
+        binding.itemDetails.capacityFirstCb.setOnClickListener {
+            binding.itemDetails.capacityFirstCb.isChecked = true
+            binding.itemDetails.capacitySecondCb.isChecked = false
+        }
+        binding.itemDetails.capacitySecondCb.setOnClickListener {
+            binding.itemDetails.capacityFirstCb.isChecked = false
+            binding.itemDetails.capacitySecondCb.isChecked = true
+        }
+    }
+
+
 }

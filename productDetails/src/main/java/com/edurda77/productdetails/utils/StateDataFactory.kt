@@ -26,7 +26,7 @@ class StateDataFactory(
                 )
                 setColorCategory(
                     binding.itemDetails.shopTv,
-                    binding.itemDetails.shopTv,
+                    binding.itemDetails.lineShop,
                     allTextView,
                     allView
                 )
