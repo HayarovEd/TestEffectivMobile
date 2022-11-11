@@ -6,6 +6,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:orientation">vertical</item>
+    </style>
 
+    <style name="style_rating">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">#FFB800</item>
     </style>
 </resources>

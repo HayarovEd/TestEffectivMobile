@@ -19,7 +19,7 @@ class AppNavigationImpl @Inject constructor(
         Navigation.findNavController(activity, R.id.nav_host_fragment_activity_main)
     }
 
-    override fun execute(action: Action, bestSeller: BestSeller) {
+    override fun execute(action: Action, bestSeller: BestSeller?) {
             when (action) {
                 Action.HomeToProduct -> {
                     val bundle = bundleOf("amount" to bestSeller)
@@ -31,7 +31,7 @@ class AppNavigationImpl @Inject constructor(
                 }
                 Action.ProductToHome -> {
                     val bundle = Bundle()
-
+                    navController.navigate(R.id.navigation_home, bundle)
                 }
             }
     }

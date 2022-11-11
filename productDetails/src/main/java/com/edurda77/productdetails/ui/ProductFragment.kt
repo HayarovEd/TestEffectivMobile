@@ -4,11 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.edurda77.mylibrary.navigation.Action
 import com.edurda77.mylibrary.navigation.AppNavigation
 import com.edurda77.productdetails.databinding.FragmentProductBinding
+import com.edurda77.productdetails.presentation.ProductAdapter
+import com.edurda77.productdetails.presentation.ProductFragmentViewModel
+import com.edurda77.productdetails.utils.DataFactory
 import com.edurda77.productdetails.utils.ProductData
 import com.edurda77.productdetails.utils.StateDataFactory
+import com.edurda77.productdetails.utils.StateProduct
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,6 +26,7 @@ class ProductFragment : Fragment() {
     private var _binding: FragmentProductBinding? = null
     private var productData: ProductData = ProductData.Shop
     private val binding get() = _binding!!
+    private val viewModel by viewModels<ProductFragmentViewModel>()
 
     @Inject
     lateinit var coordinator: AppNavigation
@@ -35,7 +45,23 @@ class ProductFragment : Fragment() {
         selectColor()
         selectCapacity()
         StateDataFactory(binding, productData, requireContext()).initStateCategory()
+        viewModel.productData.observe(viewLifecycleOwner) {
+            when (it) {
+                is StateProduct.Success -> {
+                    initRecyclerView(it.data.images)
+                    DataFactory(binding).setData(it.data)
+                }
+                is StateProduct.Error -> {
+                    Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
+                }
+                is StateProduct.Loading -> {}
+            }
+        }
+        binding.backBt.setOnClickListener {
+            coordinator.execute(Action.ProductToHome, null)
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -79,5 +105,13 @@ class ProductFragment : Fragment() {
         }
     }
 
-
+    private fun initRecyclerView(images: List<String>) {
+        val recyclerView: RecyclerView = binding.imageProductRv
+        recyclerView.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.HORIZONTAL, false
+        )
+        val adapter = ProductAdapter(images)
+        recyclerView.adapter = adapter
+        (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(Integer.MAX_VALUE/2)
+    }
 }
