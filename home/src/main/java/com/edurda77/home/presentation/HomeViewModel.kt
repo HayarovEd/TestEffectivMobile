@@ -26,6 +26,7 @@ class HomeViewModel @Inject constructor(private val repository: NetworkRepositor
                     _shopData.value = StateHome.Success(repoData.data)
                 }
                 is ResultNetwork.SuccessItem -> {}
+                is ResultNetwork.SuccessBasket -> {}
                 is ResultNetwork.Error -> {
                     _shopData.value = StateHome.Error(repoData.error)
                 }

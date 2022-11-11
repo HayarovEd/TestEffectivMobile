@@ -60,6 +60,9 @@ class ProductFragment : Fragment() {
         binding.backBt.setOnClickListener {
             coordinator.execute(Action.ProductToHome, null)
         }
+        binding.chartBt.setOnClickListener {
+            coordinator.execute(Action.ProductToChart, null)
+        }
     }
 
 

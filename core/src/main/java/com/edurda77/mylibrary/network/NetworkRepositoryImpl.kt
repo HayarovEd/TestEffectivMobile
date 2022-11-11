@@ -31,4 +31,17 @@ class NetworkRepositoryImpl @Inject constructor(private val apiService: ApiServi
             ResultNetwork.Error(Throwable(response.errorBody().toString()))
         }
     }
+
+    override suspend fun getResponseBasket(): ResultNetwork {
+        val response = try {
+            apiService.getBasket()
+        } catch (e: IOException) {
+            return ResultNetwork.Error(e)
+        }
+        return if (response.isSuccessful) {
+            ResultNetwork.SuccessBasket(response.body()!!)
+        } else {
+            ResultNetwork.Error(Throwable(response.errorBody().toString()))
+        }
+    }
 }

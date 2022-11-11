@@ -25,6 +25,7 @@ class ProductFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             when (val repoData = repository.getResponseItem()) {
                 is ResultNetwork.Success -> {}
+                is ResultNetwork.SuccessBasket -> {}
                 is ResultNetwork.SuccessItem -> {
                     _productData.value = StateProduct.Success(repoData.data)
                 }

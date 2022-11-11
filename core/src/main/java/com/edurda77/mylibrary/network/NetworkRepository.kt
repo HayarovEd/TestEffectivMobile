@@ -4,4 +4,6 @@ interface NetworkRepository {
     suspend fun getResponseAllData(): ResultNetwork
 
     suspend fun getResponseItem(): ResultNetwork
+
+    suspend fun getResponseBasket(): ResultNetwork
 }

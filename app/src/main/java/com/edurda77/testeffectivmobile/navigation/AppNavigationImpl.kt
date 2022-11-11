@@ -27,7 +27,7 @@ class AppNavigationImpl @Inject constructor(
                 }
                 Action.ProductToChart -> {
                     val bundle = Bundle()
-
+                    navController.navigate(R.id.navigation_dashboard, bundle)
                 }
                 Action.ProductToHome -> {
                     val bundle = Bundle()

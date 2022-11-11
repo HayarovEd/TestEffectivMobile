@@ -1,10 +1,12 @@
-package com.edurda77.testeffectivmobile.ui.dashboard
+package com.edurda77.cart.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-class DashboardViewModel : ViewModel() {
+//@HiltViewModel
+class CartViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

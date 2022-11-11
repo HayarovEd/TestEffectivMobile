@@ -47,9 +47,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home -> {
                     showBottomNav()
                 }
-                R.id.navigation_dashboard -> {
-                    showBottomNav()
-                }
                 R.id.navigation_notifications -> {
                     showBottomNav()
                 }
