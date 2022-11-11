@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/violet">
+
+     <androidx.appcompat.widget.AppCompatImageView
+         android:id="@+id/image_iv"
+         android:layout_width="80dp"
+         android:layout_height="80dp"
+         android:layout_marginTop="8dp"
+         android:layout_marginStart="8dp"
+         android:layout_marginBottom="8dp"
+         android:background="@drawable/button_shape"
+         android:scaleType="centerInside"
+         android:src="@drawable/ic_no_photo"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintBottom_toBottomOf="parent"/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/title_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="10dp"
+         android:text="@string/sample_string"
+         android:fontFamily="@font/mark_pro_medium"
+         android:textSize="20sp"
+         android:textColor="@color/white"
+         app:layout_constraintTop_toTopOf="@id/image_iv"
+         app:layout_constraintStart_toEndOf="@id/image_iv"/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/price_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="10dp"
+         android:text="$3000.00"
+         android:fontFamily="@font/mark_pro_medium"
+         android:textSize="20sp"
+         android:textColor="@color/orange"
+         app:layout_constraintTop_toBottomOf="@id/title_tv"
+         app:layout_constraintStart_toEndOf="@id/image_iv"/>
+
+     <androidx.appcompat.widget.AppCompatImageView
+         android:id="@+id/inc_dcr_iv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginEnd="8dp"
+         android:src="@drawable/ic_incr_decr"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toStartOf="@id/delete_ib"/>
+
+     <androidx.appcompat.widget.AppCompatImageButton
+         android:id="@+id/delete_ib"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginEnd="4dp"
+         android:background="@color/violet"
+         android:src="@drawable/ic_cart"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"         />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
