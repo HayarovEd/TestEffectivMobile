@@ -14,7 +14,7 @@ import com.edurda77.cart.presentation.CartAdapter
 import com.edurda77.cart.presentation.CartViewModel
 import com.edurda77.cart.utils.StateCart
 import com.edurda77.mylibrary.entity.Basket
-import com.edurda77.mylibrary.entity.HomeStore
+import com.edurda77.mylibrary.navigation.Action
 import com.edurda77.mylibrary.navigation.AppNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -43,12 +43,17 @@ class CartFragment : Fragment() {
             when (it) {
                 is StateCart.Success -> {
                     initRecyclerView(it.data.basket)
+                    binding.itemCart.totalContentTv.text = "$ ${it.data.total.div(1000)},${it.data.total%1000} us"
+                    binding.itemCart.deliveryContentTv.text = it.data.delivery
                 }
                 is StateCart.Error -> {
                     Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
                 }
                 is StateCart.Loading -> {}
             }
+        }
+        binding.backBt.setOnClickListener {
+            coordinator.execute(Action.ProductToHome, null)
         }
     }
 
