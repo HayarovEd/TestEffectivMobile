@@ -5,19 +5,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/violet">
 
-     <androidx.appcompat.widget.AppCompatImageView
-         android:id="@+id/image_iv"
-         android:layout_width="80dp"
-         android:layout_height="80dp"
-         android:layout_marginTop="8dp"
-         android:layout_marginStart="8dp"
-         android:layout_marginBottom="8dp"
-         android:background="@drawable/button_shape"
-         android:scaleType="centerInside"
-         android:src="@drawable/ic_no_photo"
+     <com.google.android.material.card.MaterialCardView
+         android:id="@+id/cart_item"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="8dp"
+         app:cardCornerRadius="8dp"
+         app:cardElevation="5dp"
          app:layout_constraintTop_toTopOf="parent"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintBottom_toBottomOf="parent"/>
+         app:layout_constraintStart_toStartOf="parent">
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+          <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/image_iv"
+              android:layout_width="80dp"
+              android:layout_height="80dp"
+              android:background="@drawable/button_shape"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"/>
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+     </com.google.android.material.card.MaterialCardView>
+
 
      <androidx.appcompat.widget.AppCompatTextView
          android:id="@+id/title_tv"
@@ -28,8 +41,8 @@
          android:fontFamily="@font/mark_pro_medium"
          android:textSize="20sp"
          android:textColor="@color/white"
-         app:layout_constraintTop_toTopOf="@id/image_iv"
-         app:layout_constraintStart_toEndOf="@id/image_iv"/>
+         app:layout_constraintTop_toTopOf="@id/cart_item"
+         app:layout_constraintStart_toEndOf="@id/cart_item"/>
 
      <androidx.appcompat.widget.AppCompatTextView
          android:id="@+id/price_tv"
@@ -41,7 +54,7 @@
          android:textSize="20sp"
          android:textColor="@color/orange"
          app:layout_constraintTop_toBottomOf="@id/title_tv"
-         app:layout_constraintStart_toEndOf="@id/image_iv"/>
+         app:layout_constraintStart_toEndOf="@id/cart_item"/>
 
      <androidx.appcompat.widget.AppCompatImageView
          android:id="@+id/inc_dcr_iv"

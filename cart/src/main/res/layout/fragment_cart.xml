@@ -1,81 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="com.edurda77.cart.ui.CartFragment">
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/back_bt"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="20dp"
-        android:scaleType="center"
-        android:background="@drawable/button_shape_violet"
-        android:src="@drawable/ic_back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/location_bt"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:scaleType="center"
-        android:background="@drawable/button_shape_orange"
-        android:src="@drawable/ic_location_white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/back_bt"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_shape_violet"
+            android:scaleType="center"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/location_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="Add address"
-        android:fontFamily="@font/mark_pro_medium"
-        android:textSize="15sp"
-        android:textColor="@color/violet"
-        app:layout_constraintTop_toTopOf="@id/location_bt"
-        app:layout_constraintBottom_toBottomOf="@id/location_bt"
-        app:layout_constraintEnd_toStartOf="@id/location_bt"/>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/location_bt"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/button_shape_orange"
+            android:scaleType="center"
+            android:src="@drawable/ic_location_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/my_cart_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="20dp"
-        android:text="My cart"
-        android:fontFamily="@font/mark_pro_bold"
-        android:textSize="35sp"
-        android:textColor="@color/violet"
-        app:layout_constraintTop_toBottomOf="@id/back_bt"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/location_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/mark_pro_medium"
+            android:text="Add address"
+            android:textColor="@color/violet"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/location_bt"
+            app:layout_constraintEnd_toStartOf="@id/location_bt"
+            app:layout_constraintTop_toTopOf="@id/location_bt" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/content_cart_mc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/my_cart_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <include
-            android:id="@+id/item_cart"
-            android:layout_gravity="center"
-            layout="@layout/item_cart_mc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.card.MaterialCardView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_cart_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/mark_pro_bold"
+            android:text="My cart"
+            android:textColor="@color/violet"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back_bt" />
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/content_cart_mc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/my_cart_tv">
 
+            <include
+                android:id="@+id/item_cart"
+                layout="@layout/item_cart_mc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </com.google.android.material.card.MaterialCardView>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
