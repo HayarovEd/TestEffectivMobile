@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Home</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="brandNames">
+        <item>Samsung</item>
+        <item>Apple</item>
+        <item>Xiaomi</item>
+    </string-array>
+
+    <string-array name="locationNames">
+        <item>Moscow</item>
+        <item>St.Petersburg</item>
+        <item>Berlin</item>
+        <item>Rome</item>
+    </string-array>
+
+    <string-array name="prices">
+        <item>$0 - $300</item>
+        <item>$301-$500</item>
+        <item>$501-$1000</item>
+        <item>$1001-$5000</item>
+        <item>$5001-$10000</item>
+    </string-array>
+
+    <string-array name="sizes">
+        <item>4,5 to 5,5 inches</item>
+        <item>5,5 to 6,5 inches</item>
+        <item>more 6,5 inches</item>
+    </string-array>
+</resources>

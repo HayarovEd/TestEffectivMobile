@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/violet">
+
+     <com.google.android.material.card.MaterialCardView
+         android:id="@+id/cart_item"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="8dp"
+         app:cardCornerRadius="8dp"
+         app:cardElevation="5dp"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintStart_toStartOf="parent">
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+          <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/image_iv"
+              android:layout_width="80dp"
+              android:layout_height="80dp"
+              android:background="@drawable/button_shape"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"/>
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+     </com.google.android.material.card.MaterialCardView>
+
+
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/title_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="10dp"
+         android:text="@string/sample_string"
+         android:fontFamily="@font/mark_pro_medium"
+         android:textSize="20sp"
+         android:textColor="@color/white"
+         app:layout_constraintTop_toTopOf="@id/cart_item"
+         app:layout_constraintStart_toEndOf="@id/cart_item"/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/price_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="10dp"
+         android:text="$3000.00"
+         android:fontFamily="@font/mark_pro_medium"
+         android:textSize="20sp"
+         android:textColor="@color/orange"
+         app:layout_constraintTop_toBottomOf="@id/title_tv"
+         app:layout_constraintStart_toEndOf="@id/cart_item"/>
+
+     <androidx.appcompat.widget.AppCompatImageView
+         android:id="@+id/inc_dcr_iv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginEnd="8dp"
+         android:src="@drawable/ic_incr_decr"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toStartOf="@id/delete_ib"/>
+
+     <androidx.appcompat.widget.AppCompatImageButton
+         android:id="@+id/delete_ib"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginEnd="4dp"
+         android:background="@color/violet"
+         android:src="@drawable/ic_cart"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"         />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
