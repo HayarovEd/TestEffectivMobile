@@ -17,7 +17,7 @@ class HotSalesHolder(private val binding: ItemHotSalesBinding) :
             val urlPoster = item.picture
             Glide.with(this.itemView.context)
                 .load(urlPoster)
-                .placeholder(com.edurda77.mylibrary.R.drawable.ic_no_photo)
+                //.placeholder(com.edurda77.mylibrary.R.drawable.ic_no_photo)
                 .into(binding.imageHotSales)
             binding.titleTv.text = item.title
             binding.subtitleTv.text = item.subtitle

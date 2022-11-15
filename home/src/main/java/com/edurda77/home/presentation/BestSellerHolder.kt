@@ -17,7 +17,7 @@ class BestSellerHolder(private val binding: ItemBestSellerBinding) :
             val urlPoster = item.picture
             Glide.with(this.itemView.context)
                 .load(urlPoster)
-                .placeholder(com.edurda77.mylibrary.R.drawable.ic_no_photo)
+                //.placeholder(com.edurda77.mylibrary.R.drawable.ic_no_photo)
                 .into(binding.imageBestSeller)
             binding.modelTv.text = item.title
         }

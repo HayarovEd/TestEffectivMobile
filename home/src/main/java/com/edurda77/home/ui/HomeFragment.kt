@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -53,6 +52,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         super.onViewCreated(view, savedInstanceState)
         switchCategory()
         initSpinner()
+        initFilterSpinners()
         StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
         viewModel.shopData.observe(viewLifecycleOwner) {
             when (it) {
@@ -67,7 +67,11 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
             }
         }
         binding.filterBt.setOnClickListener {
-            showDialogFilter()
+            showFilter()
+        }
+
+        binding.itemFilter.cancelBt.setOnClickListener {
+            hideFilter()
         }
     }
 
@@ -135,9 +139,20 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         recyclerView.adapter = bestSellerAdapter
     }
 
-    private fun showDialogFilter() {
-        val dialog = FilterDialogFragment()
-        dialog.show(childFragmentManager, "argument")
+    private fun showFilter() {
+        //val dialog = FilterDialogFragment()
+        //dialog.show(childFragmentManager, "argument")
+        binding.filterMc.isVisible = true
+        binding.bestSeller.isVisible = false
+        binding.bestSellerRv.isVisible = false
+        binding.seeMoreBs.isVisible = false
+    }
+
+    private fun hideFilter() {
+        binding.filterMc.isVisible = false
+        binding.bestSeller.isVisible = true
+        binding.bestSellerRv.isVisible = true
+        binding.seeMoreBs.isVisible = true
     }
 
     private fun initSpinner() {
@@ -145,5 +160,22 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         val location = requireContext().resources.getStringArray(R.array.locationNames)
         val brandAdapter = ArrayAdapter (requireContext(), R.layout.item_location_spinner, R.id.item_spinner_location_tv, location)
         brandSpinner.adapter = brandAdapter
+    }
+
+    private fun initFilterSpinners() {
+        val brandSpinner = binding.itemFilter.brandSp
+        val brand = requireContext().resources.getStringArray(R.array.brandNames)
+        val brandAdapter = ArrayAdapter (requireContext(), R.layout.item_spinner, R.id.item_spinner_tv, brand)
+        brandSpinner.adapter = brandAdapter
+
+        val priceSpinner = binding.itemFilter.priceSp
+        val prices = requireContext().resources.getStringArray(R.array.prices)
+        val priceAdapter = ArrayAdapter (requireContext(), R.layout.item_spinner, R.id.item_spinner_tv, prices)
+        priceSpinner.adapter = priceAdapter
+
+        val sizeSpinner = binding.itemFilter.sizeSp
+        val sizes = requireContext().resources.getStringArray(R.array.sizes)
+        val sizeAdapter = ArrayAdapter (requireContext(), R.layout.item_spinner, R.id.item_spinner_tv, sizes)
+        sizeSpinner.adapter = sizeAdapter
     }
 }
