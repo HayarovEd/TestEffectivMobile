@@ -251,6 +251,25 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/hot_sales" />
 
+      <com.google.android.material.card.MaterialCardView
+          android:id="@+id/filter_mc"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          app:cardCornerRadius="25dp"
+          android:layout_margin="8dp"
+          android:visibility="invisible"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/hot_sales_vp"
+          app:layout_constraintStart_toStartOf="parent">
+         <include
+             android:id="@+id/item_filter"
+             android:layout_gravity="center"
+             layout="@layout/item_sort"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
+      </com.google.android.material.card.MaterialCardView>
+
       <androidx.appcompat.widget.AppCompatTextView
           android:id="@+id/best_seller"
           android:layout_width="wrap_content"
