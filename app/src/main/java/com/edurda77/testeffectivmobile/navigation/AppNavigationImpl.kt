@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.edurda77.mylibrary.entity.BestSeller
+import com.edurda77.mylibrary.data.dto.BestSeller
 import com.edurda77.mylibrary.navigation.Action
 import com.edurda77.mylibrary.navigation.AppNavigation
 import com.edurda77.testeffectivmobile.R

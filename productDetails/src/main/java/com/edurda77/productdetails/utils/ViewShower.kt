@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import com.edurda77.mylibrary.R
 import com.edurda77.productdetails.databinding.FragmentProductBinding
 
-class StateDataFactory(
+class ViewShower(
     private val binding: FragmentProductBinding,
     private val productData: ProductData,
     private val context: Context

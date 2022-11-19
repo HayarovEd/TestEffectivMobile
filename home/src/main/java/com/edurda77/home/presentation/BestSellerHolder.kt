@@ -4,7 +4,7 @@ import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.edurda77.home.databinding.ItemBestSellerBinding
-import com.edurda77.mylibrary.entity.BestSeller
+import com.edurda77.mylibrary.data.dto.BestSeller
 
 class BestSellerHolder(private val binding: ItemBestSellerBinding) :
     RecyclerView.ViewHolder(binding.root) {

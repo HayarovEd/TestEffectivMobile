@@ -9,14 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.edurda77.mylibrary.data.dto.JsonStructureItem
+import com.edurda77.mylibrary.entity.CartData
 import com.edurda77.mylibrary.navigation.Action
 import com.edurda77.mylibrary.navigation.AppNavigation
 import com.edurda77.productdetails.databinding.FragmentProductBinding
 import com.edurda77.productdetails.presentation.ProductAdapter
 import com.edurda77.productdetails.presentation.ProductFragmentViewModel
-import com.edurda77.productdetails.utils.DataFactory
 import com.edurda77.productdetails.utils.ProductData
-import com.edurda77.productdetails.utils.StateDataFactory
+import com.edurda77.productdetails.utils.ViewShower
 import com.edurda77.productdetails.utils.StateProduct
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -44,12 +45,12 @@ class ProductFragment : Fragment() {
         switchCategory()
         selectColor()
         selectCapacity()
-        StateDataFactory(binding, productData, requireContext()).initStateCategory()
+        ViewShower(binding, productData, requireContext()).initStateCategory()
         viewModel.productData.observe(viewLifecycleOwner) {
             when (it) {
                 is StateProduct.Success -> {
                     initRecyclerView(it.data.images)
-                    DataFactory(binding).setData(it.data)
+                    setData(it.data)
                 }
                 is StateProduct.Error -> {
                     Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
@@ -74,15 +75,15 @@ class ProductFragment : Fragment() {
     private fun switchCategory() {
         binding.itemDetails.shopTv.setOnClickListener {
             productData = ProductData.Shop
-            StateDataFactory(binding, productData, requireContext()).initStateCategory()
+            ViewShower(binding, productData, requireContext()).initStateCategory()
         }
         binding.itemDetails.detailsTv.setOnClickListener {
             productData = ProductData.Details
-            StateDataFactory(binding, productData, requireContext()).initStateCategory()
+            ViewShower(binding, productData, requireContext()).initStateCategory()
         }
         binding.itemDetails.featuresTv.setOnClickListener {
             productData = ProductData.Features
-            StateDataFactory(binding, productData, requireContext()).initStateCategory()
+            ViewShower(binding, productData, requireContext()).initStateCategory()
         }
     }
 
@@ -116,5 +117,18 @@ class ProductFragment : Fragment() {
         val adapter = ProductAdapter(images)
         recyclerView.adapter = adapter
         (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(Integer.MAX_VALUE/2)
+    }
+
+    fun setData(productData: com.edurda77.mylibrary.entity.ProductData) {
+        with(binding.itemDetails) {
+            titleProductTv.text = productData.title
+            favoriteBt.isChecked = productData.isFavorites
+            processorTv.text = productData.cPU
+            cameraTv.text = productData.camera
+            ramTv.text = productData.ssd
+            memoryTv.text = productData.sd
+            ratingProduct.rating = productData.rating.toFloat()
+            addToChartIb.text = "Add to Cart  ${productData.price} $"
+        }
     }
 }

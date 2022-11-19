@@ -4,14 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.edurda77.cart.utils.StateCart
-import com.edurda77.mylibrary.network.NetworkRepository
-import com.edurda77.mylibrary.network.ResultNetwork
+import com.edurda77.mylibrary.usecases.ShopUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class CartViewModel @Inject constructor(private val repository: NetworkRepository) : ViewModel() {
+class CartViewModel @Inject constructor(private val shopUseCases: ShopUseCases) : ViewModel() {
     private val _shopData = MutableLiveData<StateCart>(StateCart.Loading)
     val shopData = _shopData
 
@@ -21,16 +22,15 @@ class CartViewModel @Inject constructor(private val repository: NetworkRepositor
 
     private fun getDataFromRepo() {
         viewModelScope.launch {
-            when (val repoData = repository.getResponseBasket()) {
-                is ResultNetwork.Success -> {}
-                is ResultNetwork.SuccessItem -> {}
-                is ResultNetwork.SuccessBasket -> {
-                    _shopData.value = StateCart.Success(repoData.data)
-                }
-                is ResultNetwork.Error -> {
-                    _shopData.value = StateCart.Error(repoData.error)
+            val state = withContext(Dispatchers.Default) {
+                try {
+                    val productData = shopUseCases.getCartData()
+                    StateCart.Success(productData)
+                } catch (exception: Exception) {
+                    StateCart.Error(exception)
                 }
             }
+            _shopData.value = state
         }
     }
 }

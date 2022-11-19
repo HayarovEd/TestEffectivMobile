@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.edurda77.home.databinding.FragmentHomeBinding
 import com.edurda77.mylibrary.R
 
-internal class StateCategoryFactory(
+internal class ViewShower(
     private val binding: FragmentHomeBinding,
     private val stateCategory: StateCategory,
     private val context: Context

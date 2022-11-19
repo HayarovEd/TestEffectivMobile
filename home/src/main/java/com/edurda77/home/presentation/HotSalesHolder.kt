@@ -5,7 +5,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.edurda77.home.databinding.ItemHotSalesBinding
-import com.edurda77.mylibrary.entity.HomeStore
+import com.edurda77.mylibrary.data.dto.HomeStore
 
 class HotSalesHolder(private val binding: ItemHotSalesBinding) :
     RecyclerView.ViewHolder(binding.root) {

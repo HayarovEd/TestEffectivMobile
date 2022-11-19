@@ -18,10 +18,10 @@ import com.edurda77.home.presentation.BestSellerAdapter
 import com.edurda77.home.presentation.HomeViewModel
 import com.edurda77.home.presentation.HotSalesAdapter
 import com.edurda77.home.utils.StateCategory
-import com.edurda77.home.utils.StateCategoryFactory
+import com.edurda77.home.utils.ViewShower
 import com.edurda77.home.utils.StateHome
-import com.edurda77.mylibrary.entity.BestSeller
-import com.edurda77.mylibrary.entity.HomeStore
+import com.edurda77.mylibrary.data.dto.BestSeller
+import com.edurda77.mylibrary.data.dto.HomeStore
 import com.edurda77.mylibrary.navigation.Action
 import com.edurda77.mylibrary.navigation.AppNavigation
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +53,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         switchCategory()
         initSpinner()
         initFilterSpinners()
-        StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+        ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         viewModel.shopData.observe(viewLifecycleOwner) {
             when (it) {
                 is StateHome.Success -> {
@@ -84,27 +84,27 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
     private fun switchCategory() {
         binding.phonesBt.setOnClickListener {
             stateCategory = StateCategory.ShowPhones
-            StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+            ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         }
         binding.computersBt.setOnClickListener {
             stateCategory = StateCategory.ShowComputers
-            StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+            ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         }
         binding.healthBt.setOnClickListener {
             stateCategory = StateCategory.ShowHealth
-            StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+            ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         }
         binding.booksBt.setOnClickListener {
             stateCategory = StateCategory.ShowBooks
-            StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+            ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         }
         binding.othersBt.setOnClickListener {
             stateCategory = StateCategory.ShowOthers
-            StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+            ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         }
         binding.viewAll.setOnClickListener {
             stateCategory = StateCategory.ShowAll
-            StateCategoryFactory(binding, stateCategory, requireContext()).initStateCategory()
+            ViewShower(binding, stateCategory, requireContext()).initStateCategory()
         }
     }
 

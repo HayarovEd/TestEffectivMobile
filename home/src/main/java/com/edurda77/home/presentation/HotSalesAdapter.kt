@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.edurda77.home.databinding.ItemHotSalesBinding
-import com.edurda77.mylibrary.entity.HomeStore
+import com.edurda77.mylibrary.data.dto.HomeStore
 
 class HotSalesAdapter(
     private val dataList: List<HomeStore>,

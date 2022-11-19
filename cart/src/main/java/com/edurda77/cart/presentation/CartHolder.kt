@@ -3,7 +3,7 @@ package com.edurda77.cart.presentation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.edurda77.cart.databinding.ItemRvBinding
-import com.edurda77.mylibrary.entity.Basket
+import com.edurda77.mylibrary.data.dto.Basket
 
 class CartHolder(private val binding: ItemRvBinding) :
     RecyclerView.ViewHolder(binding.root) {
