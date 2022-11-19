@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.edurda77.home.databinding.ItemBestSellerBinding
-import com.edurda77.home.databinding.ItemHotSalesBinding
-import com.edurda77.mylibrary.entity.BestSeller
-import com.edurda77.mylibrary.entity.HomeStore
+import com.edurda77.mylibrary.data.dto.BestSeller
 
 class BestSellerAdapter(
     private val dataList: List<BestSeller>,

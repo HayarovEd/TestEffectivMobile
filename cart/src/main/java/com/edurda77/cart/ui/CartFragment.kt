@@ -13,7 +13,7 @@ import com.edurda77.cart.databinding.FragmentCartBinding
 import com.edurda77.cart.presentation.CartAdapter
 import com.edurda77.cart.presentation.CartViewModel
 import com.edurda77.cart.utils.StateCart
-import com.edurda77.mylibrary.entity.Basket
+import com.edurda77.mylibrary.data.dto.Basket
 import com.edurda77.mylibrary.navigation.Action
 import com.edurda77.mylibrary.navigation.AppNavigation
 import dagger.hilt.android.AndroidEntryPoint

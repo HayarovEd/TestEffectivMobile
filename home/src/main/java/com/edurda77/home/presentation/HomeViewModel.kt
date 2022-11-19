@@ -4,14 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.edurda77.home.utils.StateHome
-import com.edurda77.mylibrary.network.NetworkRepository
-import com.edurda77.mylibrary.network.ResultNetwork
+import com.edurda77.mylibrary.usecases.ShopUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: NetworkRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val shopUseCases: ShopUseCases) : ViewModel() {
     private val _shopData = MutableLiveData<StateHome>(StateHome.Loading)
     val shopData = _shopData
 
@@ -21,16 +22,15 @@ class HomeViewModel @Inject constructor(private val repository: NetworkRepositor
 
     private fun getDataFromRepo() {
         viewModelScope.launch {
-            when (val repoData = repository.getResponseAllData()) {
-                is ResultNetwork.Success -> {
-                    _shopData.value = StateHome.Success(repoData.data)
-                }
-                is ResultNetwork.SuccessItem -> {}
-                is ResultNetwork.SuccessBasket -> {}
-                is ResultNetwork.Error -> {
-                    _shopData.value = StateHome.Error(repoData.error)
+            val state = withContext(Dispatchers.Default) {
+                try {
+                    val shopData = shopUseCases.getShopData()
+                    StateHome.Success(shopData)
+                } catch (exception: Exception) {
+                    StateHome.Error(exception)
                 }
             }
+            _shopData.value = state
         }
     }
 }

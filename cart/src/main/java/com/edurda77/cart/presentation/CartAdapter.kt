@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.edurda77.cart.databinding.ItemRvBinding
-import com.edurda77.mylibrary.entity.Basket
+import com.edurda77.mylibrary.data.dto.Basket
 
 class CartAdapter(private val dataList: List<Basket>) : RecyclerView.Adapter<CartHolder>() {
 

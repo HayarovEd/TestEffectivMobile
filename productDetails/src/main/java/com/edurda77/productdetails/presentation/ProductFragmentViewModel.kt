@@ -3,16 +3,17 @@ package com.edurda77.productdetails.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.edurda77.mylibrary.network.NetworkRepository
-import com.edurda77.mylibrary.network.ResultNetwork
+import com.edurda77.mylibrary.usecases.ShopUseCases
 import com.edurda77.productdetails.utils.StateProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductFragmentViewModel @Inject constructor(
-    private val repository: NetworkRepository
+    private val shopUseCases: ShopUseCases
 ) : ViewModel() {
     private val _productData = MutableLiveData<StateProduct>(StateProduct.Loading)
     val productData = _productData
@@ -23,16 +24,15 @@ class ProductFragmentViewModel @Inject constructor(
 
     private fun getDataFromRepo() {
         viewModelScope.launch {
-            when (val repoData = repository.getResponseItem()) {
-                is ResultNetwork.Success -> {}
-                is ResultNetwork.SuccessBasket -> {}
-                is ResultNetwork.SuccessItem -> {
-                    _productData.value = StateProduct.Success(repoData.data)
-                }
-                is ResultNetwork.Error -> {
-                    _productData.value = StateProduct.Error(repoData.error)
+            val state = withContext(Dispatchers.Default) {
+                try {
+                    val productData = shopUseCases.getProductData()
+                    StateProduct.Success(productData)
+                } catch (exception: Exception) {
+                    StateProduct.Error(exception)
                 }
             }
+            _productData.value = state
         }
     }
 }
