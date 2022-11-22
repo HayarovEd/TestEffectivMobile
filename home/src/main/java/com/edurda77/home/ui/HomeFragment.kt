@@ -24,8 +24,8 @@ import com.edurda77.mylibrary.data.entity.BestSeller
 import com.edurda77.mylibrary.data.entity.HomeStore
 import com.edurda77.mylibrary.data.navigation.Action
 import com.edurda77.mylibrary.data.navigation.AppNavigation
-import com.edurda77.mylibrary.domain.entity.ItemBest
-import com.edurda77.mylibrary.domain.entity.ItenHome
+import com.edurda77.domain.entity.ItemBest
+import com.edurda77.domain.entity.ItenHome
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -110,11 +110,11 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         }
     }
 
-    override fun onBuyIconClick(homeStore: ItenHome) {
+    override fun onBuyIconClick(homeStore: com.edurda77.domain.entity.ItenHome) {
         Toast.makeText(requireContext(), "${homeStore.title} Not today", Toast.LENGTH_LONG).show()
     }
 
-    private fun initHotSalesRecyclerView(data: List<ItenHome>) {
+    private fun initHotSalesRecyclerView(data: List<com.edurda77.domain.entity.ItenHome>) {
         val recyclerView: RecyclerView = binding.hotSalesVp
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
@@ -125,7 +125,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
     }
 
 
-    private fun initBestSellerRecyclerView(bestSeller: List<ItemBest>) {
+    private fun initBestSellerRecyclerView(bestSeller: List<com.edurda77.domain.entity.ItemBest>) {
         val recyclerView: RecyclerView = binding.bestSellerRv
         recyclerView.layoutManager = GridLayoutManager(
             requireContext(), 2, GridLayoutManager
@@ -133,7 +133,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         )
         val stateClickListener: BestSellerAdapter.OnStateClickListener =
             object : BestSellerAdapter.OnStateClickListener {
-                override fun onStateClick(bestSeller: ItemBest, position: Int) {
+                override fun onStateClick(bestSeller: com.edurda77.domain.entity.ItemBest, position: Int) {
                     coordinator.execute(Action.HomeToProduct, bestSeller)
                 }
             }

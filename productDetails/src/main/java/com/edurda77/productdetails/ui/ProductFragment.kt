@@ -117,7 +117,7 @@ class ProductFragment : Fragment() {
         (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(Integer.MAX_VALUE/2)
     }
 
-    fun setData(productData: com.edurda77.mylibrary.domain.entity.ProductData) {
+    fun setData(productData: com.edurda77.domain.entity.ProductData) {
         with(binding.itemDetails) {
             titleProductTv.text = productData.title
             favoriteBt.isChecked = productData.isFavorites
