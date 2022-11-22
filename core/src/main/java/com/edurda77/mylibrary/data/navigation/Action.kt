@@ -1,4 +1,4 @@
-package com.edurda77.mylibrary.navigation
+package com.edurda77.mylibrary.data.navigation
 
 sealed interface Action {
     object HomeToProduct : Action

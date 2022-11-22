@@ -1,6 +1,6 @@
 package com.edurda77.home.utils
 
-import com.edurda77.mylibrary.entity.ShopData
+import com.edurda77.mylibrary.domain.entity.ShopData
 
 sealed interface StateHome {
     object Loading : StateHome

@@ -1,6 +1,6 @@
 package com.edurda77.productdetails.utils
 
-import com.edurda77.mylibrary.entity.ProductData
+import com.edurda77.mylibrary.domain.entity.ProductData
 
 sealed interface StateProduct {
     object Loading : StateProduct

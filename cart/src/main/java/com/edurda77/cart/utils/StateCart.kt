@@ -1,6 +1,6 @@
 package com.edurda77.cart.utils
 
-import com.edurda77.mylibrary.entity.CartData
+import com.edurda77.mylibrary.domain.entity.CartData
 
 sealed interface StateCart {
     object Loading : StateCart

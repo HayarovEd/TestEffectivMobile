@@ -1,7 +1,7 @@
-package com.edurda77.mylibrary.di
+package com.edurda77.mylibrary.data.di
 
-import com.edurda77.mylibrary.data.repositories.api.ApiService
-import com.edurda77.mylibrary.data.repositories.NetworkRepository
+import com.edurda77.mylibrary.data.api.ApiService
+import com.edurda77.mylibrary.domain.repository.NetworkRepository
 import com.edurda77.mylibrary.data.repositories.NetworkRepositoryImpl
 import dagger.Module
 import dagger.Provides

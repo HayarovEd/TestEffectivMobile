@@ -1,6 +1,6 @@
 package com.edurda77.testeffectivmobile.navigation
 
-import com.edurda77.mylibrary.navigation.AppNavigation
+import com.edurda77.mylibrary.data.navigation.AppNavigation
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

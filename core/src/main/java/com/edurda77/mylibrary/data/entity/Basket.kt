@@ -1,4 +1,4 @@
-package com.edurda77.mylibrary.data.dto
+package com.edurda77.mylibrary.data.entity
 
 
 import com.google.gson.annotations.SerializedName
