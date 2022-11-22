@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.edurda77.home.utils.StateHome
-import com.edurda77.mylibrary.domain.usecases.ShopUseCase
+import com.edurda77.domain.usecases.ShopUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val shopUseCase: ShopUseCase) : ViewModel() {
+class HomeViewModel @Inject constructor(private val shopUseCase: com.edurda77.domain.usecases.ShopUseCase) : ViewModel() {
     private val _shopData = MutableLiveData<StateHome>(StateHome.Loading)
     val shopData = _shopData
 

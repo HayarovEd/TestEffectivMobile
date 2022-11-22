@@ -14,7 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TestEffectivMobile"
 include ':app'
-include ':core'
+include ':data'
 include ':home'
 include ':productDetails'
 include ':cart'
+include ':domain'

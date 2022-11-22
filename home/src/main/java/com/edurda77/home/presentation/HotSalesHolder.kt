@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.edurda77.home.databinding.ItemHotSalesBinding
 import com.edurda77.mylibrary.data.entity.HomeStore
-import com.edurda77.mylibrary.domain.entity.ItenHome
+import com.edurda77.domain.entity.ItenHome
 
 class HotSalesHolder(private val binding: ItemHotSalesBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
         val onBuyClick: AppCompatButton = binding.buyBt
 
-        fun bind (item: ItenHome) {
+        fun bind (item: com.edurda77.domain.entity.ItenHome) {
             binding.newIv.isVisible = item.isNew
             val urlPoster = item.picture
             Glide.with(this.itemView.context)

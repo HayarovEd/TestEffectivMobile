@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.edurda77.home.databinding.ItemHotSalesBinding
 import com.edurda77.mylibrary.data.entity.HomeStore
-import com.edurda77.mylibrary.domain.entity.ItenHome
+import com.edurda77.domain.entity.ItenHome
 
 class HotSalesAdapter(
-    private val dataList: List<ItenHome>,
+    private val dataList: List<com.edurda77.domain.entity.ItenHome>,
     private val buyItemInterface: BuyItemInterface
 ) : RecyclerView.Adapter<HotSalesHolder>() {
     interface BuyItemInterface {
-        fun onBuyIconClick(homeStore: ItenHome)
+        fun onBuyIconClick(homeStore: com.edurda77.domain.entity.ItenHome)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotSalesHolder {
@@ -22,7 +22,7 @@ class HotSalesAdapter(
 
     override fun onBindViewHolder(holder: HotSalesHolder, position: Int) {
         val positionInList = position % dataList.size
-        val homeStore: ItenHome = dataList[positionInList]
+        val homeStore: com.edurda77.domain.entity.ItenHome = dataList[positionInList]
         holder.bind(homeStore)
         holder.onBuyClick.setOnClickListener{
             buyItemInterface.onBuyIconClick(homeStore)

@@ -3,11 +3,11 @@ package com.edurda77.cart.presentation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.edurda77.cart.databinding.ItemRvBinding
-import com.edurda77.mylibrary.domain.entity.ItemCart
+import com.edurda77.domain.entity.ItemCart
 
 class CartHolder(private val binding: ItemRvBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind (item: ItemCart) {
+    fun bind (item: com.edurda77.domain.entity.ItemCart) {
         binding.priceTv.text = "$${item.price}.00"
         val urlPoster = item.images
         Glide.with(this.itemView.context)

@@ -8,7 +8,7 @@ import androidx.navigation.Navigation
 import com.edurda77.mylibrary.data.entity.BestSeller
 import com.edurda77.mylibrary.data.navigation.Action
 import com.edurda77.mylibrary.data.navigation.AppNavigation
-import com.edurda77.mylibrary.domain.entity.ItemBest
+import com.edurda77.domain.entity.ItemBest
 import com.edurda77.testeffectivmobile.R
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ class AppNavigationImpl @Inject constructor(
         Navigation.findNavController(activity, R.id.nav_host_fragment_activity_main)
     }
 
-    override fun execute(action: Action, bestSeller: ItemBest?) {
+    override fun execute(action: Action, bestSeller: com.edurda77.domain.entity.ItemBest?) {
             when (action) {
                 Action.HomeToProduct -> {
                     val bundle = bundleOf("amount" to bestSeller)
