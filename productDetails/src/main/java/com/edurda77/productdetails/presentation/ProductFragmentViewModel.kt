@@ -3,7 +3,8 @@ package com.edurda77.productdetails.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.edurda77.mylibrary.usecases.ShopUseCases
+import com.edurda77.mylibrary.domain.usecases.ProductUseCase
+import com.edurda77.mylibrary.domain.usecases.ShopUseCase
 import com.edurda77.productdetails.utils.StateProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductFragmentViewModel @Inject constructor(
-    private val shopUseCases: ShopUseCases
+    private val productUseCase: ProductUseCase
 ) : ViewModel() {
     private val _productData = MutableLiveData<StateProduct>(StateProduct.Loading)
     val productData = _productData
@@ -26,7 +27,7 @@ class ProductFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             val state = withContext(Dispatchers.Default) {
                 try {
-                    val productData = shopUseCases.getProductData()
+                    val productData = productUseCase.getProductData()
                     StateProduct.Success(productData)
                 } catch (exception: Exception) {
                     StateProduct.Error(exception)

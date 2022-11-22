@@ -20,10 +20,12 @@ import com.edurda77.home.presentation.HotSalesAdapter
 import com.edurda77.home.utils.StateCategory
 import com.edurda77.home.utils.ViewShower
 import com.edurda77.home.utils.StateHome
-import com.edurda77.mylibrary.data.dto.BestSeller
-import com.edurda77.mylibrary.data.dto.HomeStore
-import com.edurda77.mylibrary.navigation.Action
-import com.edurda77.mylibrary.navigation.AppNavigation
+import com.edurda77.mylibrary.data.entity.BestSeller
+import com.edurda77.mylibrary.data.entity.HomeStore
+import com.edurda77.mylibrary.data.navigation.Action
+import com.edurda77.mylibrary.data.navigation.AppNavigation
+import com.edurda77.mylibrary.domain.entity.ItemBest
+import com.edurda77.mylibrary.domain.entity.ItenHome
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -108,11 +110,11 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         }
     }
 
-    override fun onBuyIconClick(homeStore: HomeStore) {
+    override fun onBuyIconClick(homeStore: ItenHome) {
         Toast.makeText(requireContext(), "${homeStore.title} Not today", Toast.LENGTH_LONG).show()
     }
 
-    private fun initHotSalesRecyclerView(data: List<HomeStore>) {
+    private fun initHotSalesRecyclerView(data: List<ItenHome>) {
         val recyclerView: RecyclerView = binding.hotSalesVp
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
@@ -123,7 +125,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
     }
 
 
-    private fun initBestSellerRecyclerView(bestSeller: List<BestSeller>) {
+    private fun initBestSellerRecyclerView(bestSeller: List<ItemBest>) {
         val recyclerView: RecyclerView = binding.bestSellerRv
         recyclerView.layoutManager = GridLayoutManager(
             requireContext(), 2, GridLayoutManager
@@ -131,7 +133,7 @@ class HomeFragment : Fragment(), HotSalesAdapter.BuyItemInterface {
         )
         val stateClickListener: BestSellerAdapter.OnStateClickListener =
             object : BestSellerAdapter.OnStateClickListener {
-                override fun onStateClick(bestSeller: BestSeller, position: Int) {
+                override fun onStateClick(bestSeller: ItemBest, position: Int) {
                     coordinator.execute(Action.HomeToProduct, bestSeller)
                 }
             }

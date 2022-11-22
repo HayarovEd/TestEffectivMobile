@@ -1,8 +1,8 @@
-package com.edurda77.mylibrary.data.repositories.api
+package com.edurda77.mylibrary.data.api
 
-import com.edurda77.mylibrary.data.dto.JsonStructureAllData
-import com.edurda77.mylibrary.data.dto.JsonStructureCart
-import com.edurda77.mylibrary.data.dto.JsonStructureItem
+import com.edurda77.mylibrary.data.entity.JsonStructureAllData
+import com.edurda77.mylibrary.data.entity.JsonStructureCart
+import com.edurda77.mylibrary.data.entity.JsonStructureItem
 import retrofit2.Response
 import retrofit2.http.GET
 

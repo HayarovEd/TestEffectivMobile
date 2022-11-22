@@ -4,7 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.edurda77.cart.utils.StateCart
-import com.edurda77.mylibrary.usecases.ShopUseCases
+import com.edurda77.mylibrary.domain.usecases.CartUseCase
+import com.edurda77.mylibrary.domain.usecases.ShopUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class CartViewModel @Inject constructor(private val shopUseCases: ShopUseCases) : ViewModel() {
+class CartViewModel @Inject constructor(private val cartUseCase: CartUseCase) : ViewModel() {
     private val _shopData = MutableLiveData<StateCart>(StateCart.Loading)
     val shopData = _shopData
 
@@ -24,7 +25,7 @@ class CartViewModel @Inject constructor(private val shopUseCases: ShopUseCases) 
         viewModelScope.launch {
             val state = withContext(Dispatchers.Default) {
                 try {
-                    val productData = shopUseCases.getCartData()
+                    val productData = cartUseCase.getCartData()
                     StateCart.Success(productData)
                 } catch (exception: Exception) {
                     StateCart.Error(exception)

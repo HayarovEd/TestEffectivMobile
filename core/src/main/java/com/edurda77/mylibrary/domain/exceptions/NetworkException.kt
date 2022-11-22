@@ -1,4 +1,4 @@
-package com.edurda77.mylibrary.data.exceptions
+package com.edurda77.mylibrary.domain.exceptions
 
 class NetworkException : Exception(message){
 

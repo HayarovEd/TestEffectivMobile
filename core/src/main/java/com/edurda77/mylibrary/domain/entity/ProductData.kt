@@ -1,4 +1,4 @@
-package com.edurda77.mylibrary.entity
+package com.edurda77.mylibrary.domain.entity
 
 import java.io.Serializable
 

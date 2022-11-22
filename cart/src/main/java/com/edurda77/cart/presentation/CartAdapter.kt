@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.edurda77.cart.databinding.ItemRvBinding
-import com.edurda77.mylibrary.data.dto.Basket
+import com.edurda77.mylibrary.data.entity.Basket
+import com.edurda77.mylibrary.domain.entity.ItemCart
 
-class CartAdapter(private val dataList: List<Basket>) : RecyclerView.Adapter<CartHolder>() {
+class CartAdapter(private val dataList: List<ItemCart>) : RecyclerView.Adapter<CartHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartHolder {
         val inflater = LayoutInflater.from(parent.context)

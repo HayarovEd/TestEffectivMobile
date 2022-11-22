@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.edurda77.mylibrary.data.dto.JsonStructureItem
-import com.edurda77.mylibrary.entity.CartData
-import com.edurda77.mylibrary.navigation.Action
-import com.edurda77.mylibrary.navigation.AppNavigation
+import com.edurda77.mylibrary.data.navigation.Action
+import com.edurda77.mylibrary.data.navigation.AppNavigation
 import com.edurda77.productdetails.databinding.FragmentProductBinding
 import com.edurda77.productdetails.presentation.ProductAdapter
 import com.edurda77.productdetails.presentation.ProductFragmentViewModel
@@ -119,7 +117,7 @@ class ProductFragment : Fragment() {
         (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(Integer.MAX_VALUE/2)
     }
 
-    fun setData(productData: com.edurda77.mylibrary.entity.ProductData) {
+    fun setData(productData: com.edurda77.mylibrary.domain.entity.ProductData) {
         with(binding.itemDetails) {
             titleProductTv.text = productData.title
             favoriteBt.isChecked = productData.isFavorites

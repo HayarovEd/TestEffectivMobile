@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.edurda77.mylibrary.navigation.AppNavigation
+import com.edurda77.mylibrary.data.navigation.AppNavigation
 import com.edurda77.testeffectivmobile.databinding.ActivityMainBinding
 import com.edurda77.testeffectivmobile.presentation.MainViewModel
 import com.edurda77.testeffectivmobile.utils.StateMainActivity

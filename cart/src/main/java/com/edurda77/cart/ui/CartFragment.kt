@@ -13,9 +13,10 @@ import com.edurda77.cart.databinding.FragmentCartBinding
 import com.edurda77.cart.presentation.CartAdapter
 import com.edurda77.cart.presentation.CartViewModel
 import com.edurda77.cart.utils.StateCart
-import com.edurda77.mylibrary.data.dto.Basket
-import com.edurda77.mylibrary.navigation.Action
-import com.edurda77.mylibrary.navigation.AppNavigation
+import com.edurda77.mylibrary.data.entity.Basket
+import com.edurda77.mylibrary.data.navigation.Action
+import com.edurda77.mylibrary.data.navigation.AppNavigation
+import com.edurda77.mylibrary.domain.entity.ItemCart
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -62,7 +63,7 @@ class CartFragment : Fragment() {
         _binding = null
     }
 
-    private fun initRecyclerView(data: List<Basket>) {
+    private fun initRecyclerView(data: List<ItemCart>) {
         val recyclerView: RecyclerView = binding.itemCart.cartRv
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
